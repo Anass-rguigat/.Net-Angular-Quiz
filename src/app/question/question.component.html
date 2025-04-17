@@ -1,0 +1,142 @@
+<!-- Écran d'accueil -->
+<div class="container mt-5">
+    <div class="card p-4 shadow-lg text-center">
+        <h2 class="mb-3">Quiz</h2>
+        <h4 class="mb-3">Welcome {{ name }}</h4>
+        <p class="text-muted">Total Questions: {{ questionList.length }}</p>
+        <div class="d-flex justify-content-center gap-3 mt-3">
+            <button class="btn btn-warning btn-lg" (click)="showQuestions = true; isQuizStarted = false">
+                Réviser
+            </button>
+            <button class="btn btn-primary btn-lg" (click)="startQuiz()">
+                Commencer le quiz
+            </button>
+            <button class="btn btn-primary btn-lg" [routerLink]="'/welcome'">
+                Retour
+            </button>
+        </div>
+    </div>
+
+    <!-- Liste des questions avec leçons -->
+    <div class="card p-4 shadow-lg mt-4" *ngIf="showQuestions && !isQuizStarted">
+        <div class="text-center mb-4">
+            <h2 class="mb-3">
+                <i class="fa fa-book"></i> Préparez-vous pour le quiz
+            </h2>
+            <p class="text-muted">
+                Revoyez les leçons associées aux questions avant de commencer.
+            </p>
+        </div>
+
+        <div class="accordion" id="lessonList">
+            <div class="accordion-item" *ngFor="let question of questionList; let i = index">
+                <h2 class="accordion-header" id="headingLesson{{ i }}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#collapseLesson' + i" aria-expanded="false"
+                        [attr.aria-controls]="'collapseLesson' + i">
+                        Question {{ i + 1 }} : {{ question.questionText }}
+                    </button>
+                </h2>
+                <div [id]="'collapseLesson' + i" class="accordion-collapse collapse"
+                    [attr.aria-labelledby]="'headingLesson' + i" data-bs-parent="#lessonList">
+                    <div class="accordion-body">
+                        <p class="text-muted">
+                            <i class="fas fa-book-reader"></i> {{ question.lesson }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz en cours -->
+    <div class="card p-4 shadow-lg mt-4" *ngIf="isQuizStarted && !isQuizCompleted">
+        <h4 class="text-primary">
+            Question {{ currentQuestion + 1 }} / {{ questionList.length }}
+        </h4>
+        <div class="text-end text-danger fw-bold mb-2">
+            Temps restant : {{ timeLeft }}s
+          </div>
+          
+        <h3 class="mb-3">{{ questionList[currentQuestion]?.questionText }}</h3>
+
+        <div class="form-check" *ngFor="let option of questionList[currentQuestion]?.options">
+            <input class="form-check-input" type="radio" [name]="'question' + currentQuestion" [value]="option"
+                [(ngModel)]="userAnswers[currentQuestion]" />
+            <label class="form-check-label ms-2" [ngClass]="{
+          'fw-bold text-primary': userAnswers[currentQuestion] === option
+        }">
+                {{ option.text }}
+            </label>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <button class="btn btn-outline-secondary" disabled (click)="previousQuestion()">
+                Précédent
+            </button>
+            <button class="btn btn-primary" (click)="nextQuestion()">
+                Suivant
+            </button>
+            
+              
+    
+        </div>
+    </div>
+    <!-- Résultat final -->
+<div class="card p-4 shadow-lg mt-4" *ngIf="isQuizCompleted">
+    <div class="text-center mb-4">
+      <h2 class="text-success">
+        <i class="fa fa-trophy"></i> Félicitations ! Quiz Terminé
+        <i class="fa fa-trophy"></i>
+      </h2>
+      <p class="text-muted">Voici votre récapitulatif :</p>
+      <h4>Votre score : {{ score }} / {{ questionList.length }}</h4>
+      <p class="text-info">
+        Soit {{ (score / questionList.length * 100) | number:'1.0-0' }}%
+      </p>
+    </div>
+  
+    <div class="accordion" id="quizResults">
+      <div class="accordion-item" *ngFor="let question of questionList; let i = index">
+        <h2 class="accordion-header" id="heading{{ i }}">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            [attr.data-bs-target]="'#collapse' + i" aria-expanded="false"
+            [attr.aria-controls]="'collapse' + i">
+            Question {{ i + 1 }} : {{ question.questionText }}
+          </button>
+        </h2>
+        <div id="collapse{{ i }}" class="accordion-collapse collapse"
+          [attr.aria-labelledby]="'heading' + i" data-bs-parent="#quizResults">
+          <div class="accordion-body">
+            <p>
+              <strong>Votre réponse :</strong>
+              <span [ngClass]="{
+                'text-success fw-bold': userAnswers[i]?.correct,
+                'text-danger fw-bold': !userAnswers[i]?.correct
+              }">
+                {{ userAnswers[i]?.text || 'Aucune réponse' }}
+                <i *ngIf="userAnswers[i]?.correct" class="fa fa-thumbs-up text-success"></i>
+                <i *ngIf="!userAnswers[i]?.correct" class="fa fa-thumbs-down text-danger"></i>
+              </span>
+            </p>
+            <p>
+              <strong>Bonne réponse :</strong> {{ getCorrectAnswer(question) }}
+            </p>
+            <div class="alert alert-info">
+              <strong>Explication :</strong> {{ question.explanation }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Bouton pour recommencer un autre quiz -->
+    <div class="text-center mt-4">
+      <button class="btn btn-primary" (click)="restartQuiz()">
+        <i class="fa fa-refresh"></i> Commencer un autre quiz
+      </button>
+    </div>
+  </div>
+  
+</div>
+    

@@ -1,0 +1,22 @@
+<div class="container py-5 text-center">
+    <h1 class="display-5 fw-bold"><i class="fa fa-trophy text-warning"></i> Bienvenue sur le Quiz Challenge !</h1>
+    <p class="col-md-8 fs-4 mx-auto">Testez vos connaissances en répondant aux questions.  
+    </p>
+    <p>Faites de votre mieux pour obtenir le meilleur résultat !</p>
+
+    <h4><i class="fa fa-list-ul text-primary"></i> Règles du jeu :</h4>
+    <ol class="text-start d-inline-block">
+        <li><i class="fa fa-check-circle text-success"></i> Une bonne réponse vous rapproche de la victoire.</li>
+        <li><i class="fa fa-times-circle text-danger"></i> Une mauvaise réponse est une opportunité d'apprendre et de s'améliorer.</li>
+        <li><i class="fa fa-rotate-right text-info"></i> Actualiser la page réinitialise le quiz.</li>
+    </ol>
+
+    <div class="name col-md-4 my-3 mx-auto">
+        <label for=""><i class="fa fa-user"></i> Entrez votre nom :</label>
+        <input #name type="text" class="form-control text-center">
+    </div>
+
+    <button class="btn btn-primary btn-lg" [routerLink]="'/question'" (click)="startQuiz()">
+        <i class="fa fa-play"></i> Lancer le Quiz !
+    </button>
+</div>

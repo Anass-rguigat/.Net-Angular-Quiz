@@ -1,0 +1,103 @@
+{
+    "questions": [
+        {
+            "questionText": "Which of the following does TypeScript use to specify types?",
+            "lesson": "In TypeScript, a colon (:) is used to define the type of a variable, function parameter, or return value.",
+            "options": [
+                { "text": ":", "correct": true },
+                { "text": ";", "correct": false },
+                { "text": "!", "correct": false },
+                { "text": "&", "correct": false }
+            ],
+            "explanation": "TypeScript uses a colon (:) to separate the property name from the property type."
+        },
+        {
+            "questionText": "Which of the following is NOT a type used in TypeScript?",
+            "lesson": "TypeScript provides several built-in types like 'number', 'string', and 'boolean'. However, 'enum' is a special feature and not a primitive type.",
+            "options": [
+                { "text": "number", "correct": false },
+                { "text": "string", "correct": false },
+                { "text": "boolean", "correct": false },
+                { "text": "enum", "correct": true }
+            ],
+            "explanation": "The 'enum' keyword defines a set of named constants, but it is not a primitive type like number or string."
+        },
+        {
+            "questionText": "How can we specify properties and methods for an object in TypeScript?",
+            "lesson": "Interfaces in TypeScript define the structure of objects, specifying required properties and methods without implementing them.",
+            "options": [
+                { "text": "Use classes.", "correct": false },
+                { "text": "Use interfaces.", "correct": true },
+                { "text": "Use enums.", "correct": false },
+                { "text": "Use async/await.", "correct": false }
+            ],
+            "explanation": "Interfaces are used to define the structure of an object, including its properties and methods."
+        },
+        {
+            "questionText": "How else can Array<number> be written in TypeScript?",
+            "lesson": "In TypeScript, an array can be defined using either 'Array<number>' or the shorthand notation 'number[]'.",
+            "options": [
+                { "text": "@number", "correct": false },
+                { "text": "number[]", "correct": true },
+                { "text": "number!", "correct": false },
+                { "text": "number?", "correct": false }
+            ],
+            "explanation": "In TypeScript, 'number[]' is a shorthand syntax for 'Array<number>'."
+        },
+        {
+            "questionText": "In which of these does a class take parameters?",
+            "lesson": "Constructors in TypeScript allow you to initialize objects with predefined parameters when creating an instance of a class.",
+            "options": [
+                { "text": "constructor", "correct": true },
+                { "text": "destructor", "correct": false },
+                { "text": "import", "correct": false },
+                { "text": "subscribe", "correct": false }
+            ],
+            "explanation": "A constructor is a special method in a class used to initialize objects and take parameters."
+        },
+        {
+            "questionText": "Which is NOT an access modifier?",
+            "lesson": "Access modifiers like 'public', 'private', and 'protected' control visibility of properties and methods in a class.",
+            "options": [
+                { "text": "private", "correct": false },
+                { "text": "protected", "correct": false },
+                { "text": "public", "correct": false },
+                { "text": "async", "correct": true }
+            ],
+            "explanation": "'async' is a keyword used to declare asynchronous functions, not an access modifier."
+        },
+        {
+            "questionText": "Which keyword allows us to share information between files in TypeScript?",
+            "lesson": "The 'export' keyword in TypeScript makes classes, functions, and variables available for use in other files.",
+            "options": [
+                { "text": "import", "correct": false },
+                { "text": "export", "correct": true },
+                { "text": "async", "correct": false },
+                { "text": "constructor", "correct": false }
+            ],
+            "explanation": "The 'export' keyword allows for information to be transmitted between files."
+        },
+        {
+            "questionText": "Which is an array method to generate a new array based on a condition?",
+            "lesson": "The 'filter' method in JavaScript and TypeScript creates a new array with elements that match a given condition.",
+            "options": [
+                { "text": "filter", "correct": true },
+                { "text": "map", "correct": false },
+                { "text": "async", "correct": false },
+                { "text": "enum", "correct": false }
+            ],
+            "explanation": "'filter' is a method used to conditionally create a new array."
+        },
+        {
+            "questionText": "How is a property accessible within a class?",
+            "lesson": "In TypeScript, the 'this' keyword allows access to class properties within methods.",
+            "options": [
+                { "text": "Using this.propertyName", "correct": true },
+                { "text": "Accessors", "correct": false },
+                { "text": "Destructuring", "correct": false },
+                { "text": "Arrow function", "correct": false }
+            ],
+            "explanation": "'this.propertyName' is the way to access a specific property within a class."
+        }
+    ]
+}
