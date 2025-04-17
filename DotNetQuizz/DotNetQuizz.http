@@ -1,0 +1,6 @@
+@DotNetQuizz_HostAddress = http://localhost:5192
+
+GET {{DotNetQuizz_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

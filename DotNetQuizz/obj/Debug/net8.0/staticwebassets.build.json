@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "lMW1v/4j+9IaNF6YbY5DTwRCgdG6VNczXd8dVJjaoKw=",
+  "Source": "DotNetQuizz",
+  "BasePath": "_content/DotNetQuizz",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
